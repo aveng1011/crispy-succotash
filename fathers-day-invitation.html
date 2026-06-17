@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Father's Day Dinner Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #b5191a;
+      --dark-red: #8a1010;
+      --cream: #f5f0e8;
+      --warm-cream: #ede5d4;
+      --gold: #c9a84c;
+      --ink: #2a1a1a;
+    }
+
+    body {
+      background: #1a0a0a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Cormorant Garamond', serif;
+      padding: 24px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--cream);
+      width: 100%;
+      max-width: 520px;
+      min-height: 820px;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0 48px;
+    }
+
+    /* ── Red header band ── */
+    .header-band {
+      width: 100%;
+      background: var(--red);
+      padding: 36px 32px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    /* ── Chinese knot SVG (top center) ── */
+    .knot-wrap {
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+    }
+
+    /* ── Blossom branch (top-right of card) ── */
+    .branch-wrap {
+      position: absolute;
+      top: 0;
+      right: -10px;
+      width: 180px;
+      pointer-events: none;
+    }
+
+    /* ── Holiday badge ── */
+    .holiday-badge {
+      margin-top: 36px;
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.75);
+    }
+
+    /* ── Floral wreath with names ── */
+    .wreath-area {
+      margin-top: 18px;
+      position: relative;
+      width: 220px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wreath-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .wreath-names {
+      position: relative;
+      text-align: center;
+      color: #fff;
+      z-index: 2;
+      line-height: 1.2;
+    }
+    .wreath-names .name-line {
+      font-family: 'IM Fell English', serif;
+      font-size: 28px;
+      font-style: italic;
+    }
+    .wreath-names .amp {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 22px;
+      display: block;
+      margin: 2px 0;
+      color: rgba(255,255,255,.85);
+    }
+
+    /* ── Body of card ── */
+    .card-body {
+      padding: 32px 40px 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+      margin: 18px auto;
+    }
+
+    .invite-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--red);
+      text-align: center;
+    }
+
+    .invite-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      color: var(--ink);
+      text-align: center;
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 380px;
+    }
+    .invite-main em {
+      font-style: italic;
+      color: var(--dark-red);
+    }
+
+    .big-date {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      color: var(--red);
+      text-align: center;
+      line-height: 1;
+      margin: 6px 0 2px;
+    }
+    .big-date-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      color: var(--ink);
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .time-line {
+      font-family: 'IM Fell English', serif;
+      font-size: 22px;
+      color: var(--ink);
+      text-align: center;
+      font-style: italic;
+    }
+
+    .venue-box {
+      background: var(--warm-cream);
+      border-left: 3px solid var(--red);
+      padding: 14px 20px;
+      width: 100%;
+      max-width: 360px;
+      margin: 4px 0;
+    }
+    .venue-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      color: var(--red);
+      letter-spacing: 1px;
+    }
+    .venue-addr {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      color: var(--ink);
+      font-style: italic;
+      margin-top: 2px;
+    }
+    .venue-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      text-decoration: none;
+      border-bottom: 1px solid var(--red);
+      opacity: .8;
+    }
+    .venue-link:hover { opacity: 1; }
+
+    /* ── Lantern decoration ── */
+    .lantern-row {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      margin: 4px 0;
+    }
+
+    /* ── RSVP button ── */
+    .rsvp-btn {
+      margin-top: 8px;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 14px 48px;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background .2s, transform .1s, box-shadow .2s;
+      box-shadow: 0 4px 18px rgba(181,25,26,.35);
+    }
+    .rsvp-btn:hover { background: var(--dark-red); box-shadow: 0 6px 24px rgba(181,25,26,.5); }
+    .rsvp-btn:active { transform: scale(.97); }
+    .rsvp-btn:disabled { background: #888; box-shadow: none; cursor: default; }
+
+    /* ── Confirmation ── */
+    .confirm-msg {
+      display: none;
+      text-align: center;
+      margin-top: 12px;
+    }
+    .confirm-msg.visible { display: block; }
+    .confirm-msg p {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--red);
+      line-height: 1.5;
+    }
+    .confirm-msg small {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      color: #888;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── Footer ── */
+    .card-footer {
+      margin-top: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #aaa;
+      text-align: center;
+    }
+
+    /* ── Confetti canvas ── */
+    #confetti-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+<canvas id="confetti-canvas"></canvas>
+
+<div class="card">
+
+  <!-- Blossom branch top-right -->
+  <div class="branch-wrap">
+    <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- main branch -->
+      <path d="M195 5 Q160 40 130 70 Q100 100 80 140 Q65 170 50 210" stroke="#b5191a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <!-- sub-branches -->
+      <path d="M160 38 Q140 25 120 30" stroke="#b5191a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <path d="M140 60 Q125 45 108 52" stroke="#b5191a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <path d="M115 88 Q100 75 88 80" stroke="#b5191a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <path d="M96 112 Q82 100 70 106" stroke="#b5191a" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <!-- blossoms -->
+      <!-- at 120,30 -->
+      <g transform="translate(112,26)">
+        <circle cx="0" cy="-6" r="3.5" fill="#b5191a" opacity=".9"/>
+        <circle cx="5.7" cy="-1.9" r="3.5" fill="#b5191a" opacity=".8"/>
+        <circle cx="3.5" cy="4.8" r="3.5" fill="#b5191a" opacity=".85"/>
+        <circle cx="-3.5" cy="4.8" r="3.5" fill="#b5191a" opacity=".8"/>
+        <circle cx="-5.7" cy="-1.9" r="3.5" fill="#b5191a" opacity=".85"/>
+        <circle cx="0" cy="0" r="2" fill="#f5f0e8"/>
+      </g>
+      <!-- at 108,52 -->
+      <g transform="translate(100,48)">
+        <circle cx="0" cy="-5" r="3" fill="#b5191a" opacity=".75"/>
+        <circle cx="4.8" cy="-1.6" r="3" fill="#b5191a" opacity=".7"/>
+        <circle cx="3" cy="4" r="3" fill="#b5191a" opacity=".75"/>
+        <circle cx="-3" cy="4" r="3" fill="#b5191a" opacity=".7"/>
+        <circle cx="-4.8" cy="-1.6" r="3" fill="#b5191a" opacity=".75"/>
+        <circle cx="0" cy="0" r="1.5" fill="#f5f0e8"/>
+      </g>
+      <!-- at 88,80 -->
+      <g transform="translate(80,76)">
+        <circle cx="0" cy="-5" r="3" fill="#b5191a" opacity=".8"/>
+        <circle cx="4.8" cy="-1.6" r="3" fill="#b5191a" opacity=".75"/>
+        <circle cx="3" cy="4" r="3" fill="#b5191a" opacity=".8"/>
+        <circle cx="-3" cy="4" r="3" fill="#b5191a" opacity=".75"/>
+        <circle cx="-4.8" cy="-1.6" r="3" fill="#b5191a" opacity=".8"/>
+        <circle cx="0" cy="0" r="1.5" fill="#f5f0e8"/>
+      </g>
+      <!-- scatter buds -->
+      <circle cx="155" cy="42" r="2.5" fill="#b5191a" opacity=".6"/>
+      <circle cx="148" cy="36" r="2" fill="#b5191a" opacity=".5"/>
+      <circle cx="133" cy="65" r="2.5" fill="#b5191a" opacity=".55"/>
+      <circle cx="70" cy="110" r="2" fill="#b5191a" opacity=".5"/>
+      <circle cx="60" cy="155" r="2.5" fill="#b5191a" opacity=".45"/>
+    </svg>
+  </div>
+
+  <!-- Red header -->
+  <div class="header-band">
+    <!-- Chinese knot -->
+    <div class="knot-wrap">
+      <svg viewBox="0 0 60 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="30" cy="18" rx="12" ry="8" stroke="#f5f0e8" stroke-width="1.5" fill="none"/>
+        <ellipse cx="30" cy="18" rx="6" ry="4" stroke="#f5f0e8" stroke-width="1" fill="none"/>
+        <path d="M18 18 Q10 28 18 38 Q26 48 30 44 Q34 48 42 38 Q50 28 42 18" stroke="#f5f0e8" stroke-width="1.5" fill="none"/>
+        <circle cx="30" cy="44" r="3" fill="#f5f0e8" opacity=".8"/>
+        <!-- tassel -->
+        <line x1="27" y1="47" x2="24" y2="70" stroke="#f5f0e8" stroke-width="1"/>
+        <line x1="30" y1="47" x2="30" y2="72" stroke="#f5f0e8" stroke-width="1"/>
+        <line x1="33" y1="47" x2="36" y2="70" stroke="#f5f0e8" stroke-width="1"/>
+        <path d="M22 70 Q25 75 24 82" stroke="#f5f0e8" stroke-width=".8" fill="none"/>
+        <path d="M30 72 Q30 77 29 84" stroke="#f5f0e8" stroke-width=".8" fill="none"/>
+        <path d="M38 70 Q35 75 36 82" stroke="#f5f0e8" stroke-width=".8" fill="none"/>
+      </svg>
+    </div>
+
+    <p class="holiday-badge">A Father's Day Celebration</p>
+
+    <!-- Wreath with guest names -->
+    <div class="wreath-area">
+      <svg class="wreath-svg" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- main circle outline -->
+        <circle cx="110" cy="110" r="96" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-dasharray="3 6"/>
+        <!-- branch loop -->
+        <path d="M110 20 Q170 50 190 110 Q170 170 110 190 Q50 170 30 110 Q50 50 110 20" stroke="rgba(255,255,255,0.55)" stroke-width="1.4" fill="none"/>
+        <!-- petals scattered around -->
+        <!-- top -->
+        <g transform="translate(110,16)"><circle cx="0" cy="-5" r="3" fill="rgba(255,255,255,0.7)"/><circle cx="4" cy="1.5" r="3" fill="rgba(255,255,255,0.65)"/><circle cx="2.5" cy="7" r="3" fill="rgba(255,255,255,0.7)"/><circle cx="-2.5" cy="7" r="3" fill="rgba(255,255,255,0.65)"/><circle cx="-4" cy="1.5" r="3" fill="rgba(255,255,255,0.7)"/><circle cx="0" cy="2" r="1.5" fill="rgba(181,25,26,0.6)"/></g>
+        <!-- right -->
+        <g transform="translate(194,110)"><circle cx="0" cy="-5" r="3" fill="rgba(255,255,255,0.65)"/><circle cx="4" cy="1.5" r="3" fill="rgba(255,255,255,0.6)"/><circle cx="2.5" cy="7" r="3" fill="rgba(255,255,255,0.65)"/><circle cx="-2.5" cy="7" r="3" fill="rgba(255,255,255,0.6)"/><circle cx="-4" cy="1.5" r="3" fill="rgba(255,255,255,0.65)"/><circle cx="0" cy="2" r="1.5" fill="rgba(181,25,26,0.6)"/></g>
+        <!-- bottom -->
+        <g transform="translate(110,202)"><circle cx="0" cy="-5" r="3" fill="rgba(255,255,255,0.7)"/><circle cx="4" cy="1.5" r="3" fill="rgba(255,255,255,0.65)"/><circle cx="2.5" cy="7" r="3" fill="rgba(255,255,255,0.7)"/><circle cx="-2.5" cy="7" r="3" fill="rgba(255,255,255,0.65)"/><circle cx="-4" cy="1.5" r="3" fill="rgba(255,255,255,0.7)"/><circle cx="0" cy="2" r="1.5" fill="rgba(181,25,26,0.6)"/></g>
+        <!-- left -->
+        <g transform="translate(26,110)"><circle cx="0" cy="-5" r="3" fill="rgba(255,255,255,0.65)"/><circle cx="4" cy="1.5" r="3" fill="rgba(255,255,255,0.6)"/><circle cx="2.5" cy="7" r="3" fill="rgba(255,255,255,0.65)"/><circle cx="-2.5" cy="7" r="3" fill="rgba(255,255,255,0.6)"/><circle cx="-4" cy="1.5" r="3" fill="rgba(255,255,255,0.65)"/><circle cx="0" cy="2" r="1.5" fill="rgba(181,25,26,0.6)"/></g>
+        <!-- diagonals -->
+        <g transform="translate(157,50) rotate(45)"><circle cx="0" cy="-4" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="3.5" cy="1.2" r="2.5" fill="rgba(255,255,255,0.55)"/><circle cx="2.2" cy="6" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="-2.2" cy="6" r="2.5" fill="rgba(255,255,255,0.55)"/><circle cx="-3.5" cy="1.2" r="2.5" fill="rgba(255,255,255,0.6)"/></g>
+        <g transform="translate(63,50) rotate(-45)"><circle cx="0" cy="-4" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="3.5" cy="1.2" r="2.5" fill="rgba(255,255,255,0.55)"/><circle cx="2.2" cy="6" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="-2.2" cy="6" r="2.5" fill="rgba(255,255,255,0.55)"/><circle cx="-3.5" cy="1.2" r="2.5" fill="rgba(255,255,255,0.6)"/></g>
+        <g transform="translate(157,168) rotate(-45)"><circle cx="0" cy="-4" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="3.5" cy="1.2" r="2.5" fill="rgba(255,255,255,0.55)"/><circle cx="2.2" cy="6" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="-2.2" cy="6" r="2.5" fill="rgba(255,255,255,0.55)"/><circle cx="-3.5" cy="1.2" r="2.5" fill="rgba(255,255,255,0.6)"/></g>
+        <g transform="translate(63,168) rotate(45)"><circle cx="0" cy="-4" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="3.5" cy="1.2" r="2.5" fill="rgba(255,255,255,0.55)"/><circle cx="2.2" cy="6" r="2.5" fill="rgba(255,255,255,0.6)"/><circle cx="-2.2" cy="6" r="2.5" fill="rgba(255,255,255,0.55)"/><circle cx="-3.5" cy="1.2" r="2.5" fill="rgba(255,255,255,0.6)"/></g>
+      </svg>
+
+      <div class="wreath-names">
+        <!-- ★ Fill in the guests' names below ★ -->
+        <span class="name-line">[Name 1]</span>
+        <span class="amp">&amp;</span>
+        <span class="name-line">[Name 2]</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card body -->
+  <div class="card-body">
+
+    <p class="invite-label">You are cordially invited</p>
+    <div class="divider"></div>
+
+    <p class="invite-main">
+      Please join us for an intimate dinner to celebrate the fathers in our lives.<br/>
+      <em>We would be honoured by your presence.</em>
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="big-date">June 21</div>
+    <p class="big-date-sub">Saturday &nbsp;·&nbsp; Father's Day 2025</p>
+
+    <div style="margin:8px 0"></div>
+    <p class="time-line">at half past six in the evening</p>
+
+    <div class="divider"></div>
+
+    <!-- Lantern mini-decoration -->
+    <div class="lantern-row">
+      <svg width="28" height="48" viewBox="0 0 28 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="14" y1="0" x2="14" y2="7" stroke="#b5191a" stroke-width="1.5"/>
+        <rect x="6" y="7" width="16" height="3" rx="1.5" fill="#b5191a"/>
+        <ellipse cx="14" cy="25" rx="9" ry="14" fill="#b5191a" opacity=".85"/>
+        <line x1="14" y1="7" x2="14" y2="39" stroke="rgba(255,255,255,0.25)" stroke-width=".8"/>
+        <line x1="9" y1="12" x2="9" y2="36" stroke="rgba(255,255,255,0.15)" stroke-width=".7"/>
+        <line x1="19" y1="12" x2="19" y2="36" stroke="rgba(255,255,255,0.15)" stroke-width=".7"/>
+        <rect x="10" y="37" width="8" height="2.5" rx="1.2" fill="#b5191a"/>
+        <line x1="12" y1="39.5" x2="11" y2="46" stroke="#b5191a" stroke-width="1"/>
+        <line x1="14" y1="39.5" x2="14" y2="47" stroke="#b5191a" stroke-width="1"/>
+        <line x1="16" y1="39.5" x2="17" y2="46" stroke="#b5191a" stroke-width="1"/>
+      </svg>
+      <svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="11" y1="0" x2="11" y2="5" stroke="#b5191a" stroke-width="1.5"/>
+        <rect x="5" y="5" width="12" height="2.5" rx="1.2" fill="#b5191a"/>
+        <ellipse cx="11" cy="20" rx="7" ry="11" fill="#b5191a" opacity=".7"/>
+        <rect x="7" y="30" width="8" height="2" rx="1" fill="#b5191a"/>
+        <line x1="9" y1="32" x2="8" y2="38" stroke="#b5191a" stroke-width=".9"/>
+        <line x1="11" y1="32" x2="11" y2="39" stroke="#b5191a" stroke-width=".9"/>
+        <line x1="13" y1="32" x2="14" y2="38" stroke="#b5191a" stroke-width=".9"/>
+      </svg>
+      <svg width="28" height="48" viewBox="0 0 28 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="14" y1="0" x2="14" y2="7" stroke="#b5191a" stroke-width="1.5"/>
+        <rect x="6" y="7" width="16" height="3" rx="1.5" fill="#b5191a"/>
+        <ellipse cx="14" cy="25" rx="9" ry="14" fill="#b5191a" opacity=".85"/>
+        <line x1="14" y1="7" x2="14" y2="39" stroke="rgba(255,255,255,0.25)" stroke-width=".8"/>
+        <line x1="9" y1="12" x2="9" y2="36" stroke="rgba(255,255,255,0.15)" stroke-width=".7"/>
+        <line x1="19" y1="12" x2="19" y2="36" stroke="rgba(255,255,255,0.15)" stroke-width=".7"/>
+        <rect x="10" y="37" width="8" height="2.5" rx="1.2" fill="#b5191a"/>
+        <line x1="12" y1="39.5" x2="11" y2="46" stroke="#b5191a" stroke-width="1"/>
+        <line x1="14" y1="39.5" x2="14" y2="47" stroke="#b5191a" stroke-width="1"/>
+        <line x1="16" y1="39.5" x2="17" y2="46" stroke="#b5191a" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <!-- Venue -->
+    <div class="venue-box">
+      <p class="venue-name">Szechuan Mountain House</p>
+      <p class="venue-addr">Authentic Sichuan Cuisine</p>
+      <a class="venue-link"
+         href="https://maps.google.com/maps?vet=10CAAQoqAOahcKEwjI7b7Ki42VAxUAAAAAHQAAAAAQEQ..i&pvq=Cg0vZy8xMWJ4ZnlwN25fIh0KF3N6ZWNodWFuIG1vdW50YWluIGhvdXNlEAIYAw&lqi=ChdzemVjaHVhbiBtb3VudGFpbiBob3VzZSIDiAEBSJ-96t7xqoCACFolEAAQARACGAAYARgCIhdzemVjaHVhbiBtb3VudGFpbiBob3VzZZIBEnNpY2h1YW5fcmVzdGF1cmFudJoBRENpOURRVWxSUVVOdlpFTm9kSGxqUmpsdlQyNVdVMkZGUmxaaU0zQnBWMnM1VW1GWWFHMWxWR1JPVm10amQxZ3lZeEFC4AEA-gEECAAQSg&fvr=1&cs=0&um=1&ie=UTF-8&fb=1&gl=us&sa=X&ftid=0x89c2600e66ce62d9:0x44b0be75430098f9"
+         target="_blank" rel="noopener">View on Maps &rarr;</a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- RSVP -->
+    <button class="rsvp-btn" id="rsvpBtn" onclick="handleRSVP()">RSVP</button>
+
+    <div class="confirm-msg" id="confirmMsg">
+      <p>We look forward to seeing you!</p>
+      <small>See you on June 21st &nbsp;·&nbsp; 6:30 pm</small>
+    </div>
+
+  </div>
+
+  <p class="card-footer">父亲节快乐 &nbsp;·&nbsp; Happy Father's Day</p>
+</div>
+
+<script>
+  /* ── Confetti ── */
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let animId = null;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const GOLD_PALETTE = [
+    '#FFD700','#FFC200','#FFAA00','#E8B800','#F5D061',
+    '#C9A84C','#BFA356','#F0E27A','#fff8dc','#FFECB3'
+  ];
+
+  function spawnParticles() {
+    particles = [];
+    for (let i = 0; i < 200; i++) {
+      const size = Math.random() * 10 + 4;
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: -20 - Math.random() * 300,
+        w: size,
+        h: size * (Math.random() < 0.5 ? 0.4 : 1),
+        color: GOLD_PALETTE[Math.floor(Math.random() * GOLD_PALETTE.length)],
+        speed: Math.random() * 3 + 2,
+        drift: (Math.random() - 0.5) * 2,
+        spin: (Math.random() - 0.5) * 0.25,
+        angle: Math.random() * Math.PI * 2,
+        opacity: 1,
+        shape: Math.random() < 0.4 ? 'circle' : Math.random() < 0.5 ? 'rect' : 'star'
+      });
+    }
+  }
+
+  function drawStar(ctx, x, y, r, col, alpha) {
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = col;
+    ctx.beginPath();
+    for (let i = 0; i < 5; i++) {
+      const a = (i * 4 * Math.PI) / 5 - Math.PI / 2;
+      const xa = x + r * Math.cos(a);
+      const ya = y + r * Math.sin(a);
+      i === 0 ? ctx.moveTo(xa, ya) : ctx.lineTo(xa, ya);
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = false;
+    particles.forEach(p => {
+      p.y += p.speed;
+      p.x += p.drift;
+      p.angle += p.spin;
+      if (p.y < canvas.height + 30) alive = true;
+      if (p.y > canvas.height - 80) p.opacity = Math.max(0, p.opacity - 0.03);
+
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.angle);
+      ctx.globalAlpha = p.opacity;
+
+      if (p.shape === 'circle') {
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(0, 0, p.w / 2, 0, Math.PI * 2);
+        ctx.fill();
+      } else if (p.shape === 'star') {
+        ctx.restore();
+        drawStar(ctx, p.x, p.y, p.w / 2, p.color, p.opacity);
+        return;
+      } else {
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      }
+      ctx.restore();
+    });
+
+    if (alive) {
+      animId = requestAnimationFrame(animate);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+
+  function handleRSVP() {
+    const btn = document.getElementById('rsvpBtn');
+    const msg = document.getElementById('confirmMsg');
+    btn.disabled = true;
+    btn.textContent = '✓ RSVP Received';
+    msg.classList.add('visible');
+
+    if (animId) cancelAnimationFrame(animId);
+    spawnParticles();
+    animate();
+  }
+</script>
+</body>
+</html>
