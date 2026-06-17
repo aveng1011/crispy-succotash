@@ -76,10 +76,10 @@
     .holiday-badge {
       margin-top: 36px;
       font-family: 'Playfair Display', serif;
-      font-size: 11px;
+      font-size: 15px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: rgba(255,255,255,.75);
+      color: rgba(255,255,255,.85);
     }
 
     /* ── Floral wreath with names ── */
@@ -105,19 +105,27 @@
       text-align: center;
       color: #fff;
       z-index: 2;
-      line-height: 1.2;
+      line-height: 1.25;
+      max-width: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .wreath-names .name-line {
       font-family: 'IM Fell English', serif;
-      font-size: 28px;
+      font-size: 20px;
       font-style: italic;
+      display: block;
+      word-break: break-word;
+      hyphens: auto;
+      line-height: 1.2;
     }
     .wreath-names .amp {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 22px;
+      font-size: 18px;
       display: block;
-      margin: 2px 0;
+      margin: 4px 0;
       color: rgba(255,255,255,.85);
     }
 
@@ -186,38 +194,62 @@
     }
 
     .venue-box {
-      background: var(--warm-cream);
-      border-left: 3px solid var(--red);
-      padding: 14px 20px;
+      background: var(--red);
       width: 100%;
       max-width: 360px;
       margin: 4px 0;
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(181,25,26,.25);
     }
+    .venue-inner {
+      padding: 20px 24px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .venue-icon {
+      flex-shrink: 0;
+      margin-top: 2px;
+      opacity: .9;
+    }
+    .venue-text { flex: 1; }
     .venue-name {
       font-family: 'Playfair Display', serif;
-      font-size: 15px;
-      color: var(--red);
-      letter-spacing: 1px;
+      font-size: 17px;
+      color: #fff;
+      letter-spacing: .5px;
+      line-height: 1.2;
     }
     .venue-addr {
       font-family: 'Cormorant Garamond', serif;
       font-size: 14px;
-      color: var(--ink);
+      color: rgba(255,255,255,.75);
       font-style: italic;
-      margin-top: 2px;
+      margin-top: 3px;
+    }
+    .venue-footer {
+      border-top: 1px solid rgba(255,255,255,.2);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .venue-link {
-      display: inline-block;
-      margin-top: 6px;
-      font-size: 12px;
-      letter-spacing: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--red);
+      color: rgba(255,255,255,.85);
       text-decoration: none;
-      border-bottom: 1px solid var(--red);
-      opacity: .8;
+      transition: color .2s;
     }
-    .venue-link:hover { opacity: 1; }
+    .venue-link:hover { color: #fff; }
+    .venue-link svg { opacity: .75; transition: opacity .2s, transform .2s; }
+    .venue-link:hover svg { opacity: 1; transform: translateX(2px); }
 
     /* ── Lantern decoration ── */
     .lantern-row {
@@ -253,7 +285,7 @@
       text-align: center;
       margin-top: 12px;
     }
-    .confirm-msg.visible { display: block; }
+    .confirm-msg.visible { display: flex; flex-direction: column; align-items: center; gap: 10px; }
     .confirm-msg p {
       font-family: 'IM Fell English', serif;
       font-style: italic;
@@ -268,6 +300,27 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
+
+    /* ── Add to Calendar ── */
+    .cal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 2px;
+      background: transparent;
+      border: 1px solid var(--red);
+      color: var(--red);
+      padding: 9px 22px;
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background .2s, color .2s;
+    }
+    .cal-btn:hover { background: var(--red); color: #fff; }
+    .cal-btn:hover svg path, .cal-btn:hover svg rect, .cal-btn:hover svg line { stroke: #fff; }
 
     /* ── Footer ── */
     .card-footer {
@@ -388,9 +441,9 @@
 
       <div class="wreath-names">
         <!-- ★ Fill in the guests' names below ★ -->
-        <span class="name-line">[Name 1]</span>
+        <span class="name-line">Jingjiang Chen</span>
         <span class="amp">&amp;</span>
-        <span class="name-line">[Name 2]</span>
+        <span class="name-line">Lilly Gong</span>
       </div>
     </div>
   </div>
@@ -402,8 +455,8 @@
     <div class="divider"></div>
 
     <p class="invite-main">
-      Please join us for an intimate dinner to celebrate the fathers in our lives.<br/>
-      <em>We would be honoured by your presence.</em>
+      Please RSVP for a celebratory dinner to celebrate the best dad in the whole world!<br/>
+      <em>Complimentary on Max and Maggie.</em>
     </p>
 
     <div class="divider"></div>
@@ -412,7 +465,7 @@
     <p class="big-date-sub">Saturday &nbsp;·&nbsp; Father's Day 2025</p>
 
     <div style="margin:8px 0"></div>
-    <p class="time-line">at half past six in the evening</p>
+    <p class="time-line">6:30p.m.</p>
 
     <div class="divider"></div>
 
@@ -455,11 +508,28 @@
 
     <!-- Venue -->
     <div class="venue-box">
-      <p class="venue-name">Szechuan Mountain House</p>
-      <p class="venue-addr">Authentic Sichuan Cuisine</p>
-      <a class="venue-link"
-         href="https://maps.google.com/maps?vet=10CAAQoqAOahcKEwjI7b7Ki42VAxUAAAAAHQAAAAAQEQ..i&pvq=Cg0vZy8xMWJ4ZnlwN25fIh0KF3N6ZWNodWFuIG1vdW50YWluIGhvdXNlEAIYAw&lqi=ChdzemVjaHVhbiBtb3VudGFpbiBob3VzZSIDiAEBSJ-96t7xqoCACFolEAAQARACGAAYARgCIhdzemVjaHVhbiBtb3VudGFpbiBob3VzZZIBEnNpY2h1YW5fcmVzdGF1cmFudJoBRENpOURRVWxSUVVOdlpFTm9kSGxqUmpsdlQyNVdVMkZGUmxaaU0zQnBWMnM1VW1GWWFHMWxWR1JPVm10amQxZ3lZeEFC4AEA-gEECAAQSg&fvr=1&cs=0&um=1&ie=UTF-8&fb=1&gl=us&sa=X&ftid=0x89c2600e66ce62d9:0x44b0be75430098f9"
-         target="_blank" rel="noopener">View on Maps &rarr;</a>
+      <div class="venue-inner">
+        <div class="venue-icon">
+          <svg width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 1C6.03 1 2 5.03 2 10c0 6.75 9 17 9 17s9-10.25 9-17c0-4.97-4.03-9-9-9z" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.7)" stroke-width="1.4"/>
+            <circle cx="11" cy="10" r="3" fill="rgba(255,255,255,0.8)"/>
+          </svg>
+        </div>
+        <div class="venue-text">
+          <p class="venue-name">Szechuan Mountain House</p>
+          <p class="venue-addr">Authentic Sichuan Cuisine</p>
+        </div>
+      </div>
+      <div class="venue-footer">
+        <a class="venue-link"
+           href="https://maps.google.com/maps?vet=10CAAQoqAOahcKEwjI7b7Ki42VAxUAAAAAHQAAAAAQEQ..i&pvq=Cg0vZy8xMWJ4ZnlwN25fIh0KF3N6ZWNodWFuIG1vdW50YWluIGhvdXNlEAIYAw&lqi=ChdzemVjaHVhbiBtb3VudGFpbiBob3VzZSIDiAEBSJ-96t7xqoCACFolEAAQARACGAAYARgCIhdzemVjaHVhbiBtb3VudGFpbiBob3VzZZIBEnNpY2h1YW5fcmVzdGF1cmFudJoBRENpOURRVWxSUVVOdlpFTm9kSGxqUmpsdlQyNVdVMkZGUmxaaU0zQnBWMnM1VW1GWWFHMWxWR1JPVm10amQxZ3lZeEFC4AEA-gEECAAQSg&fvr=1&cs=0&um=1&ie=UTF-8&fb=1&gl=us&sa=X&ftid=0x89c2600e66ce62d9:0x44b0be75430098f9"
+           target="_blank" rel="noopener">
+          View on Maps
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 6h8M6 2l4 4-4 4" stroke="rgba(255,255,255,0.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
     </div>
 
     <div class="divider"></div>
@@ -470,6 +540,15 @@
     <div class="confirm-msg" id="confirmMsg">
       <p>We look forward to seeing you!</p>
       <small>See you on June 21st &nbsp;·&nbsp; 6:30 pm</small>
+      <button class="cal-btn" onclick="addToCalendar()">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="2.5" width="12" height="10.5" rx="1.5" stroke="#b5191a" stroke-width="1.3"/>
+          <line x1="1" y1="5.5" x2="13" y2="5.5" stroke="#b5191a" stroke-width="1.3"/>
+          <line x1="4.5" y1="1" x2="4.5" y2="4" stroke="#b5191a" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="9.5" y1="1" x2="9.5" y2="4" stroke="#b5191a" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Add to Apple Calendar
+      </button>
     </div>
 
   </div>
@@ -568,6 +647,32 @@
     } else {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
+  }
+
+  function addToCalendar() {
+    const ics = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//FathersDayInvite//EN',
+      'BEGIN:VEVENT',
+      'UID:fathersday-dinner-2025@invite',
+      'DTSTAMP:20250616T000000Z',
+      'DTSTART:20250621T183000',
+      'DTEND:20250621T210000',
+      'SUMMARY:Father\'s Day Dinner',
+      'DESCRIPTION:Dinner at Szechuan Mountain House to celebrate Father\'s Day.',
+      'LOCATION:Szechuan Mountain House',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'fathers-day-dinner.ics';
+    a.click();
+    URL.revokeObjectURL(url);
   }
 
   function handleRSVP() {
